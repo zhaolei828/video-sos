@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Time: 下午11:15
  */
 @SpringBootApplication
-public class VideoSOSApplication {
+public class VideoSOSAdminApplication {
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(VideoSOSApplication.class, args);
+        SpringApplication.run(VideoSOSAdminApplication.class, args);
     }
 }

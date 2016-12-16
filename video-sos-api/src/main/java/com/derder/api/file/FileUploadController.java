@@ -1,4 +1,4 @@
-package rest;
+package com.derder.api.file;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +19,7 @@ import java.io.FileOutputStream;
  */
 @RestController
 public class FileUploadController {
-    @RequestMapping(value="/api/upload", method= RequestMethod.POST)
+    @RequestMapping(value="/upload", method= RequestMethod.POST)
     public @ResponseBody
     String handleFileUpload(@RequestParam("name") String name,
                                                  @RequestParam("file") MultipartFile file){
