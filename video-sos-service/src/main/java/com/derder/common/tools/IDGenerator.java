@@ -59,8 +59,11 @@ public abstract class IDGenerator
                 }
             }
         }
-        catch (SocketException | UnknownHostException e)
+        catch (SocketException e)
         {
+            log.error( "LocalMac.getLocalMac:case" + e.getMessage() );
+            throw new ApecRuntimeException( "IDGenerator.getLocalMac:case", e.getMessage() );
+        }catch (UnknownHostException e){
             log.error( "LocalMac.getLocalMac:case" + e.getMessage() );
             throw new ApecRuntimeException( "IDGenerator.getLocalMac:case", e.getMessage() );
         }

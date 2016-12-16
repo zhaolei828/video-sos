@@ -1,6 +1,9 @@
 package com.derder.common.util;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Locale;
 
@@ -11,14 +14,17 @@ import java.util.Locale;
  * 创建日期：2016/10/14
  * 编码作者：
  */
-
-public abstract class SpringUtil
+@Service
+public class SpringUtil implements ApplicationContextAware
 {
     private static ApplicationContext applicationContext;
 
-    public static void setApplicationContext(ApplicationContext applicationContext)
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext)
     {
-        SpringUtil.applicationContext = applicationContext;
+        if (SpringUtil.applicationContext == null) {
+            SpringUtil.applicationContext = applicationContext;
+        }
     }
 
     /**

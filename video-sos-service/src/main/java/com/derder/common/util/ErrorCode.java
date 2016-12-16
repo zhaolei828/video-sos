@@ -8,4 +8,5 @@ package com.derder.common.util;
  * 编码作者：zhaolei
  */
 public interface ErrorCode {
+    public String UPLOAD_FILE_CANNOT_EMPTY="100200";
 }

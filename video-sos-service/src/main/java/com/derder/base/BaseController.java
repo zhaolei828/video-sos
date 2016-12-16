@@ -28,7 +28,7 @@ public abstract class BaseController
 
     protected <T> ResultData<T> getResultData(boolean succeed, T data, String errorCode, Object... args)
     {
-        ResultData<T> ret = new ResultData<>();
+        ResultData<T> ret = new ResultData<T>();
         ret.setSucceed( succeed );
         ret.setErrorCode( errorCode );
         if(StringUtils.isNotBlank(errorCode))

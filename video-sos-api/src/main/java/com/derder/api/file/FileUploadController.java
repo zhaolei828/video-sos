@@ -2,6 +2,7 @@ package com.derder.api.file;
 
 import com.derder.base.BaseController;
 import com.derder.common.util.DateUtil;
+import com.derder.common.util.ErrorCode;
 import com.derder.common.util.ResultData;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,7 @@ public class FileUploadController extends BaseController {
                 return getResultData(false,"","","");
             }
         } else {
-            return getResultData(false,"","","");
+            return getResultData(false,"", ErrorCode.UPLOAD_FILE_CANNOT_EMPTY);
         }
     }
 
