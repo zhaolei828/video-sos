@@ -9,4 +9,5 @@ package com.derder.common.util;
  */
 public interface ErrorCode {
     public String UPLOAD_FILE_CANNOT_EMPTY="100200";
+    public String UPLOAD_FILE_EXCEPTION="100201";
 }

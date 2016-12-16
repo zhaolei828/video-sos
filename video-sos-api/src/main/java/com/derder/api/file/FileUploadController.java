@@ -4,6 +4,7 @@ import com.derder.base.BaseController;
 import com.derder.common.util.DateUtil;
 import com.derder.common.util.ErrorCode;
 import com.derder.common.util.ResultData;
+import com.google.common.base.Strings;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +19,7 @@ import javax.servlet.annotation.MultipartConfig;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.net.URLDecoder;
 import java.util.Date;
 
 /**
@@ -38,7 +40,19 @@ public class FileUploadController extends BaseController {
 
     @RequestMapping(value="/upload", method= RequestMethod.POST)
     public @ResponseBody
-    ResultData handleFileUpload(@RequestParam("file") MultipartFile file){
+    ResultData handleFileUpload(@RequestParam("file") MultipartFile file,
+                                @RequestParam("address") String address,
+                                @RequestParam("longitude") long longitude,
+                                @RequestParam("latitude") long latitude){
+        try {
+            if (!Strings.isNullOrEmpty(address)){
+                address = URLDecoder.decode(address,"UTF-8");
+            }
+        }catch (Exception e){
+            log.error("#####文件上传异常",e);
+            return getResultData(false,"",ErrorCode.UPLOAD_FILE_EXCEPTION);
+        }
+
         if (!file.isEmpty()) {
             String fileName = file.getOriginalFilename();
             String suffix = fileName.substring(fileName.indexOf("."),fileName.length());
@@ -57,8 +71,8 @@ public class FileUploadController extends BaseController {
                 stream.close();
                 return getResultData(true,"","","");
             } catch (Exception e) {
-
-                return getResultData(false,"","","");
+                log.error("#####文件上传异常",e);
+                return getResultData(false,"",ErrorCode.UPLOAD_FILE_EXCEPTION);
             }
         } else {
             return getResultData(false,"", ErrorCode.UPLOAD_FILE_CANNOT_EMPTY);
