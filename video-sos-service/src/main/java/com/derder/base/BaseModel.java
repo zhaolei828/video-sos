@@ -1,13 +1,12 @@
 package com.derder.base;
 
 import com.derder.common.Constants;
-import com.derder.common.emtype.EnableFlag;
+import com.derder.common.util.EnableFlag;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -23,25 +22,25 @@ public class BaseModel<PK extends Serializable> implements Persistable<PK> {
     @Id
     @GeneratedValue(generator = Constants.SYSTEM_GENERATOR)
     @Column(name = "ID")
-    PK ID;
+    private PK ID;
 
     @Enumerated(EnumType.STRING)
     @Column(length=1,nullable=false,name = "ENABLE_FLAG")
-    EnableFlag enableFlag=EnableFlag.Y;
+    private EnableFlag enableFlag=EnableFlag.Y;
 
     @Column(name = "CREATE_BY", updatable = false)
-    Long createBy;
+    private Long createBy;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATE_TIME", updatable = false)
-    Date createTime;
+    private Date createTime;
 
     @Column(name = "UPDATE_BY")
-    Long updateBy;
+    private Long updateBy;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UPDATE_TIME")
-    Date updateTime;
+    private Date updateTime;
 
     public PK getID() {
         return ID;

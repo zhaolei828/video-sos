@@ -2,8 +2,7 @@ package com.derder.business.model;
 
 import com.derder.base.BaseModel;
 import com.derder.common.Constants;
-import com.derder.common.emtype.UserGroup;
-import org.hibernate.annotations.DynamicUpdate;
+import com.derder.business.emtype.UserGroup;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;

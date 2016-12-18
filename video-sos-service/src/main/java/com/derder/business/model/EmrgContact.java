@@ -16,13 +16,13 @@ import javax.persistence.Table;
 @GenericGenerator(name = Constants.SYSTEM_GENERATOR, strategy = Constants.ASSIGNED)
 public class EmrgContact extends BaseModel<Long> {
     @Column(name = "EMRG_CONTACT_NAME")
-    String name;
+    private String name;
     @Column(name = "ENRG_CONTACT_EMAIL")
-    String email;
+    private String email;
     @Column(name = "EMRG_CONTACT_PHONE")
-    String phone;
+    private String phone;
     @Column(name = "BAND_USER")
-    Long bandUser;
+    private Long bandUser;
 
     public String getName() {
         return name;

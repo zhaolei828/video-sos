@@ -1,4 +1,4 @@
-package com.derder.common.emtype;
+package com.derder.business.emtype;
 
 /**
  * Created by Administrator on 2016/12/18.

@@ -4,7 +4,7 @@ import com.derder.business.model.EmrgContact;
 import com.derder.business.model.User;
 import com.derder.business.vo.EmrgContactVO;
 import com.derder.business.vo.UserVO;
-import com.derder.common.emtype.UserGroup;
+import com.derder.business.emtype.UserGroup;
 
 /**
  * Created by Administrator on 2016/12/18.

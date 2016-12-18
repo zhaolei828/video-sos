@@ -6,7 +6,7 @@ import com.derder.business.service.UserService;
 import com.derder.business.vo.EmrgContactVO;
 import com.derder.business.vo.UserVO;
 import com.derder.base.BaseController;
-import com.derder.common.emtype.UserGroup;
+import com.derder.common.redis.CacheService;
 import com.derder.common.util.BeanUtil;
 import com.derder.common.util.JsonUtil;
 import com.derder.common.util.ResultData;
@@ -27,6 +27,9 @@ public class UserController extends BaseController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    CacheService cacheService;
+
     @RequestMapping(value="/doRegister", method= RequestMethod.POST, produces="application/json")
     public @ResponseBody
     ResultData handleRegister(@RequestBody String json){
@@ -39,6 +42,12 @@ public class UserController extends BaseController {
             emrgContactList.add(emrgContact);
         }
         userService.addUserAndEmrgContactList(user,emrgContactList);
+        return getResultData(true,"","","");
+    }
+
+    @RequestMapping(value="/testCache")
+    ResultData testCache(){
+        cacheService.add("sss","ddd");
         return getResultData(true,"","","");
     }
 }
