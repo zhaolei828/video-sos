@@ -1,6 +1,9 @@
 package com.derder.business.service;
 
+import com.derder.business.model.EmrgContact;
 import com.derder.business.model.User;
+
+import java.util.List;
 
 /**
  * 类 编 号：
@@ -12,4 +15,6 @@ import com.derder.business.model.User;
 public interface UserService {
 
     User getUserByToken(String token);
+
+    void addUserAndEmrgContactList(User user, List<EmrgContact> emrgContactList);
 }

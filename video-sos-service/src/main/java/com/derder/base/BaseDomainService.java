@@ -20,9 +20,9 @@ public abstract class BaseDomainService
      * 生成实体表编号
      * @return
      */
-    protected synchronized static String generateID()
+    protected synchronized static Long generateID()
     {
-        return String.valueOf(IDGenerator.getWorkId());
+        return IDGenerator.getWorkId();
     }
 
     /**
