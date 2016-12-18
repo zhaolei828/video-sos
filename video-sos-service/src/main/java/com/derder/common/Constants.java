@@ -57,8 +57,6 @@ public interface Constants
 
     String TOKEN = "token";
 
-    String USER_NO = "userNo"; //用户编号
-
     String CLIENT_TYPE_PARAM = "_c";
 
     String ANDROID = "android";
@@ -71,4 +69,7 @@ public interface Constants
 
     String IOS = "ios";
 
+    String CACHE_PREFIX_TOKEN = "TOKEN_";
+
+    String MD5_KEY = "SOS";
 }

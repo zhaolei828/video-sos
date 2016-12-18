@@ -6,6 +6,7 @@ import com.derder.business.dao.UserDAO;
 import com.derder.business.model.EmrgContact;
 import com.derder.business.model.User;
 import com.derder.business.service.UserService;
+import com.derder.common.util.EnableFlag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +32,8 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
     EmrgContactDAO emrgContactDAO;
 
     @Override
-    public User getUserByToken(String token) {
-        return null;
+    public User checkLogin(String userName, String password) {
+        return userDAO.findByUserNameAndPasswordAndEnableFlag(userName,password, EnableFlag.Y);
     }
 
     @Override

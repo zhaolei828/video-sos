@@ -10,4 +10,8 @@ package com.derder.common.util;
 public interface ErrorCode {
     public String UPLOAD_FILE_CANNOT_EMPTY="100200";
     public String UPLOAD_FILE_EXCEPTION="100201";
+
+    String NO_LOGIN_EXCEPTION = "600001";
+
+    String USERNAME_PASSORD_ERROR="100202";
 }

@@ -2,12 +2,15 @@ package com.derder.api.user;
 
 import com.derder.business.model.EmrgContact;
 import com.derder.business.model.User;
+import com.derder.business.service.LoginService;
 import com.derder.business.service.UserService;
 import com.derder.business.vo.EmrgContactVO;
 import com.derder.business.vo.UserVO;
 import com.derder.base.BaseController;
+import com.derder.common.Constants;
 import com.derder.common.redis.CacheService;
 import com.derder.common.util.BeanUtil;
+import com.derder.common.util.ErrorCode;
 import com.derder.common.util.JsonUtil;
 import com.derder.common.util.ResultData;
 import com.google.common.collect.Lists;
@@ -30,6 +33,9 @@ public class UserController extends BaseController {
     @Autowired
     CacheService cacheService;
 
+    @Autowired
+    LoginService loginService;
+
     @RequestMapping(value="/doRegister", method= RequestMethod.POST, produces="application/json")
     public @ResponseBody
     ResultData handleRegister(@RequestBody String json){
@@ -49,5 +55,14 @@ public class UserController extends BaseController {
     ResultData testCache(){
         cacheService.add("sss","ddd");
         return getResultData(true,"","","");
+    }
+
+    @RequestMapping(value="/doLogin",method= RequestMethod.POST)
+    ResultData handleLogin(String userName,String password){
+        String token = loginService.login(userName,password);
+        if (null != token){
+            return getResultData(true,token,"","");
+        }
+        return getResultData(false,"", ErrorCode.USERNAME_PASSORD_ERROR);
     }
 }

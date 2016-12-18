@@ -33,10 +33,10 @@ public class FileUploadController extends BaseController {
     private final Logger log = Logger.getLogger(getClass());
 
     @Value("${os.file.system.path.split}")
-    String PATH_SPLIT;
+    private String PATH_SPLIT;
 
     @Value("${file.upload.location}")
-    String UPLOAD_LOCATION;
+    private String UPLOAD_LOCATION;
 
     @RequestMapping(value="/upload", method= RequestMethod.POST)
     public @ResponseBody

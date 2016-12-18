@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    User getUserByToken(String token);
+    User checkLogin(String userName,String password);
 
     void addUserAndEmrgContactList(User user, List<EmrgContact> emrgContactList);
 }

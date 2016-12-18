@@ -8,4 +8,7 @@ package com.derder.business.service;
  * 编码作者：zhaolei
  */
 public interface LoginService {
+    String createToken();
+
+    String login(String userName,String password);
 }
