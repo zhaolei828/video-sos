@@ -1,4 +1,4 @@
-package derder.web.config;
+package derder.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .antMatchers("/", "/home").permitAll()
+            //.antMatchers("/", "/home").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()
@@ -31,6 +31,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .inMemoryAuthentication()
-            .withUser("user").password("password").roles("USER");
+            .withUser("user").password("123456").roles("USER");
     }
 }

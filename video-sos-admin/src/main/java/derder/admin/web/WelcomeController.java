@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package derder.web;
+package derder.admin.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,18 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WelcomeController {
 	@RequestMapping("/")
-	public String indexBlank() {
-		return "index";
-	}
-
-	@RequestMapping("/index")
 	public String index() {
 		return "index";
-	}
-
-    @RequestMapping(value = "/hello")
-	public String welcome() {
-		return "hello";
 	}
 
 	@RequestMapping("/login")
