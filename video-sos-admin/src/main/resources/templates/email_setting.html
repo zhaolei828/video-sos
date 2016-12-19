@@ -1,18 +1,11 @@
-<#assign base=request.getContextPath()>
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="fyunli">
-
-    <base id="base" href="${base}">
-    <title>Spring Boot - hello</title>
-
+    <title>后台管理 - 发送邮箱设置</title>
     <!-- Bootstrap core CSS -->
-    <link href="//cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${base}/css/main.css" rel="stylesheet">
+    <link href="//cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -20,34 +13,30 @@
     <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body>
-
-<!-- Begin page content -->
 <div class="container">
     <div class="page-header">
-        <h1>Sprint Boot: Hello</h1>
+        <h1>发送邮箱设置</h1>
     </div>
-
-    <div>
-        Date: ${time?date}
-        <br>
-        Time: ${time?time}
-        <br>
-        Message: ${message}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+                <a href="index.html" class="list-group-item">用户管理</a>
+                <a href="stats.html" class="list-group-item">统计</a>
+                <a href="#" class="list-group-item active">发送邮箱设置</a>
+            </div>
+        </div>
+        <div class="col-md-8">.col-md-8</div>
     </div>
 </div>
-
+</body>
 <footer class="footer">
     <div class="container">
         <p class="text-muted">&copy;2016 zhaolei</p>
     </div>
 </footer>
 
-
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="//cdn.jsdelivr.net/ie10-viewport/1.0.0/ie10-viewport.min.js"></script>
 <script src="//cdn.jsdelivr.net/jquery/1.12.1/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</body>
 </html>

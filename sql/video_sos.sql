@@ -31,6 +31,8 @@ CREATE TABLE `emrg_contact` (
 
 /*Data for the table `emrg_contact` */
 
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (810740134051188736,'王五','wangwu@gmail.com','15655115511',810740132553822208,'Y',810740132553822208,'2016-12-19 14:54:45',810740132553822208,'2016-12-19 14:54:45');
+
 /*Table structure for table `region` */
 
 DROP TABLE IF EXISTS `region`;
@@ -3621,6 +3623,8 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
+
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (810740132553822208,'张三','zhangsan@126.com','13333311551','123456','0','Y',810740132553822208,'2016-12-19 14:54:45',810740132553822208,'2016-12-19 14:54:45');
 
 /*Table structure for table `video` */
 
