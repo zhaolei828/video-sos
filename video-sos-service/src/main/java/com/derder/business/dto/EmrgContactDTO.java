@@ -1,4 +1,4 @@
-package com.derder.business.vo;
+package com.derder.business.dto;
 
 import com.derder.business.model.EmrgContact;
 
@@ -8,7 +8,7 @@ import com.derder.business.model.EmrgContact;
  * Date: 16-12-17
  * Time: 下午6:34
  */
-public class EmrgContactVO {
+public class EmrgContactDTO {
     String name;
     String email;
     String phoneNumber;
@@ -37,7 +37,7 @@ public class EmrgContactVO {
         this.phoneNumber = phoneNumber;
     }
 
-    public EmrgContact convertEmrgContact(EmrgContactVO emrgContactVO){
+    public EmrgContact convertEmrgContact(EmrgContactDTO emrgContactVO){
         EmrgContact emrgContact = new EmrgContact();
         emrgContact.setName(emrgContactVO.getName());
         emrgContact.setEmail(emrgContactVO.getEmail());

@@ -32,8 +32,8 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
     EmrgContactDAO emrgContactDAO;
 
     @Override
-    public User checkLogin(String userName, String password) {
-        return userDAO.findByUserNameAndPasswordAndEnableFlag(userName,password, EnableFlag.Y);
+    public User checkLogin(String phone, String password) {
+        return userDAO.findByUserPhoneAndPasswordAndEnableFlag(phone,password, EnableFlag.Y);
     }
 
     @Override
@@ -68,5 +68,15 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
             emrgContact.setBandUser(userId);
         }
         emrgContactDAO.save(emrgContactList);
+    }
+
+    @Override
+    public User getUser(long userId) {
+        return userDAO.findOne(userId);
+    }
+
+    @Override
+    public List<EmrgContact> getEmrgContactListByUser(long userId) {
+        return emrgContactDAO.findByBandUserAndEnableFlag(userId,EnableFlag.Y);
     }
 }

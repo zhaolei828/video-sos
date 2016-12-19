@@ -1,6 +1,7 @@
 package com.derder.business.model;
 
 import com.derder.base.BaseModel;
+import com.derder.business.dto.EmrgContactDTO;
 import com.derder.common.Constants;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -54,5 +55,13 @@ public class EmrgContact extends BaseModel<Long> {
 
     public void setBandUser(Long bandUser) {
         this.bandUser = bandUser;
+    }
+
+    public EmrgContactDTO convertDTO(EmrgContact emrgContact){
+        EmrgContactDTO emrgContactDTO = new EmrgContactDTO();
+        emrgContactDTO.setPhoneNumber(emrgContact.getPhone());
+        emrgContactDTO.setEmail(emrgContact.getEmail());
+        emrgContactDTO.setName(emrgContact.getName());
+        return emrgContactDTO;
     }
 }

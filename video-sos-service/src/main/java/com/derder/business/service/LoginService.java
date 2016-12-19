@@ -10,5 +10,5 @@ package com.derder.business.service;
 public interface LoginService {
     String createToken();
 
-    String login(String userName,String password);
+    String login(String phone,String password);
 }

@@ -1,25 +1,17 @@
 package com.derder.api.file;
 
-import com.derder.base.BaseController;
+import com.derder.api.BaseApiController;
 import com.derder.common.util.DateUtil;
 import com.derder.common.util.ErrorCode;
 import com.derder.common.util.ResultData;
-import com.google.common.base.Strings;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.annotation.MultipartConfig;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.net.URLDecoder;
 import java.util.Date;
 
 /**
@@ -29,7 +21,7 @@ import java.util.Date;
  * Time: 下午11:20
  */
 @RestController
-public class FileUploadController extends BaseController {
+public class FileUploadController extends BaseApiController {
     private final Logger log = Logger.getLogger(getClass());
 
     @Value("${os.file.system.path.split}")
@@ -38,25 +30,23 @@ public class FileUploadController extends BaseController {
     @Value("${file.upload.location}")
     private String UPLOAD_LOCATION;
 
-    @RequestMapping(value="/upload", method= RequestMethod.POST)
+    @RequestMapping(value="/sendVideo", method= RequestMethod.POST)
     public @ResponseBody
     ResultData handleFileUpload(@RequestParam("file") MultipartFile file,
-                                @RequestParam("address") String address,
-                                @RequestParam("longitude") long longitude,
-                                @RequestParam("latitude") long latitude){
+                                @RequestParam("location") String locationJson){
         try {
-            if (!Strings.isNullOrEmpty(address)){
-                address = URLDecoder.decode(address,"UTF-8");
-            }
+
         }catch (Exception e){
-            log.error("#####文件上传异常",e);
-            return getResultData(false,"",ErrorCode.UPLOAD_FILE_EXCEPTION);
+            log.error("#####sendVideo:参数格式错误。\n"
+                    + "locationJson:" +locationJson,e);
+            return getResultData(false,"",ErrorCode.PARAM_FORMAT_ERROR);
         }
 
         if (!file.isEmpty()) {
+            long userId = getUserId();
             String fileName = file.getOriginalFilename();
             String suffix = fileName.substring(fileName.indexOf("."),fileName.length());
-            String newFileName = System.currentTimeMillis() + suffix;
+            String newFileName = userId + "_" + System.currentTimeMillis() + suffix;
             String newFileDir = UPLOAD_LOCATION + datePath();
             File newDir = new File(newFileDir);
             if (!newDir.exists()){

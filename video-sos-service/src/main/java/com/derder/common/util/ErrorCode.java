@@ -14,4 +14,6 @@ public interface ErrorCode {
     String NO_LOGIN_EXCEPTION = "600001";
 
     String USERNAME_PASSORD_ERROR="100202";
+
+    String PARAM_FORMAT_ERROR="100022";
 }

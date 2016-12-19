@@ -1,6 +1,7 @@
 package com.derder.business.model;
 
 import com.derder.base.BaseModel;
+import com.derder.business.dto.UserDTO;
 import com.derder.common.Constants;
 import com.derder.business.emtype.UserGroup;
 import org.hibernate.annotations.GenericGenerator;
@@ -65,5 +66,13 @@ public class User extends BaseModel<Long> {
 
     public void setUserGroup(UserGroup userGroup) {
         this.userGroup = userGroup;
+    }
+
+    public UserDTO convertDTO(User user){
+        UserDTO userDTO = new UserDTO();
+        userDTO.setEmail(user.getUserEmail());
+        userDTO.setPhoneNumber(user.getUserPhone());
+        userDTO.setUserName(user.getUserName());
+        return userDTO;
     }
 }

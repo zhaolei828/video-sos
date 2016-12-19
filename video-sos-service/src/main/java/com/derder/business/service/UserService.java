@@ -14,7 +14,11 @@ import java.util.List;
  */
 public interface UserService {
 
-    User checkLogin(String userName,String password);
+    User checkLogin(String phone,String password);
 
     void addUserAndEmrgContactList(User user, List<EmrgContact> emrgContactList);
+
+    User getUser(long userId);
+
+    List<EmrgContact> getEmrgContactListByUser(long userId);
 }

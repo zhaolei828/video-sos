@@ -1,5 +1,8 @@
 package com.derder.business.vo;
 
+import com.derder.business.emtype.UserGroup;
+import com.derder.business.model.User;
+
 import java.util.List;
 
 /**
@@ -53,5 +56,15 @@ public class UserVO {
 
     public void setEmrgContactList(List<EmrgContactVO> emrgContactList) {
         this.emrgContactList = emrgContactList;
+    }
+
+    public User convertUser(UserVO userVO){
+        User user = new User();
+        user.setUserName(userVO.getUserName());
+        user.setPassword(userVO.getPassword());
+        user.setUserEmail(userVO.getEmail());
+        user.setUserGroup(UserGroup.COMMON_USER);
+        user.setUserPhone(userVO.getPhoneNumber());
+        return  user;
     }
 }

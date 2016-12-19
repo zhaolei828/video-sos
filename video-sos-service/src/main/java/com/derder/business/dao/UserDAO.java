@@ -8,5 +8,5 @@ import com.derder.common.util.EnableFlag;
  * Created by Administrator on 2016/12/18.
  */
 public interface UserDAO extends BaseDAO<User, Long> {
-    User findByUserNameAndPasswordAndEnableFlag(String userName, String password, EnableFlag enableFlag);
+    User findByUserPhoneAndPasswordAndEnableFlag(String userPhone, String password, EnableFlag enableFlag);
 }

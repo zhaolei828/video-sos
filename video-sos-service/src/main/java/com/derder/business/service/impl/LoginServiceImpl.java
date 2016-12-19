@@ -33,8 +33,8 @@ public class LoginServiceImpl extends BaseDomainService implements LoginService 
     }
 
     @Override
-    public String login(String userName, String password) {
-        User user = userService.checkLogin(userName,password);
+    public String login(String phone, String password) {
+        User user = userService.checkLogin(phone,password);
         if (null != user){
             String token = createToken();
             cacheService.add(Constants.CACHE_PREFIX_TOKEN + token,user.getID());
