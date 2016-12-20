@@ -2,6 +2,8 @@ package com.derder.business.service;
 
 import com.derder.business.model.EmrgContact;
 import com.derder.business.model.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -21,4 +23,6 @@ public interface UserService {
     User getUser(long userId);
 
     List<EmrgContact> getEmrgContactListByUser(long userId);
+
+    Page<User> listBySearch(String userNameKw, String phoneNumber, String email, String startDate, String endDate, PageRequest pageRequest);
 }

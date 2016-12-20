@@ -26,7 +26,22 @@
                 <a href="email_setting.html" class="list-group-item">发送邮箱设置</a>
             </div>
         </div>
-        <div class="col-md-8">.col-md-8</div>
+        <div class="col-md-8">
+            <table class="table table-hover">
+                <tr>
+                    <th>用户名</th>
+                    <th>手机号</th>
+                    <th>邮箱</th>
+                    <th>创建时间</th>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.userName}">Onions</td>
+                    <td th:text="${user.userPhone}">2.41</td>
+                    <td th:text="${user.userEmail}">yes</td>
+                    <td th:text="${user.createTime}">yes</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 </body>
