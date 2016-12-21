@@ -1,6 +1,6 @@
-package com.derder.api.file;
+package com.derder.admin.file;
 
-import com.derder.api.BaseApiController;
+import com.derder.admin.BaseApiController;
 import com.derder.common.util.DateUtil;
 import com.derder.common.util.ErrorCode;
 import com.derder.common.util.ResultData;

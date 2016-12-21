@@ -1,4 +1,4 @@
-package com.derder.api;
+package com.derder.admin;
 
 import com.derder.base.BaseController;
 import com.derder.business.model.User;
