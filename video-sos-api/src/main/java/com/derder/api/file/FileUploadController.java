@@ -4,15 +4,25 @@ import com.derder.admin.BaseApiController;
 import com.derder.common.util.DateUtil;
 import com.derder.common.util.ErrorCode;
 import com.derder.common.util.ResultData;
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.log4j.Logger;
+import org.apache.velocity.app.VelocityEngine;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.ui.velocity.VelocityEngineUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,6 +39,11 @@ public class FileUploadController extends BaseApiController {
 
     @Value("${file.upload.location}")
     private String UPLOAD_LOCATION;
+
+    @Autowired
+    private JavaMailSender mailSender;
+    @Autowired
+    private VelocityEngine velocityEngine;
 
     @RequestMapping(value="/sendVideo", method= RequestMethod.POST)
     public @ResponseBody
@@ -67,6 +82,25 @@ public class FileUploadController extends BaseApiController {
         } else {
             return getResultData(false,"", ErrorCode.UPLOAD_FILE_CANNOT_EMPTY);
         }
+    }
+
+    @RequestMapping(value="/testEmail", produces = "application/json; charset=UTF-8")
+    ResultData testEmail() throws MessagingException {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+        helper.setFrom("zhaolei828@163.com");
+        helper.setTo("zhaolei828@163.com");
+        helper.setSubject("主题：模板邮件");
+        Map<String, Object> model = new HashedMap();
+        model.put("username", "didi");
+        String text = VelocityEngineUtils.mergeTemplateIntoString(
+                velocityEngine, "template.vm", "UTF-8", model);
+        helper.setText(text, true);
+        FileSystemResource file = new FileSystemResource(new File("E:\\idea_workspace\\playground\\video-sos-parent\\video-sos-api\\868855d6996300000125dc94961c.jpg"));
+        helper.addAttachment("附件-1.jpg", file);
+        helper.addAttachment("附件-2.jpg", file);
+        mailSender.send(mimeMessage);
+        return getResultData(true,"","","");
     }
 
     String datePath(){
