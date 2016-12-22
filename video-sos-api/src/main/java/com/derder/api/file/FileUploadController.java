@@ -48,6 +48,9 @@ public class FileUploadController extends BaseApiController {
     @Value("${file.upload.location}")
     private String UPLOAD_LOCATION;
 
+    @Value("${spring.mail.username}")
+    private String SEND_EMAIL;
+
     @Autowired
     private JavaMailSender mailSender;
     @Autowired
@@ -93,11 +96,12 @@ public class FileUploadController extends BaseApiController {
             try {
                 User user = getUser();
                 List<EmrgContact> list = userService.getEmrgContactListByUser(userId);
-                String[] to = new String[list.size()];
-                for (int i = 0;i<list.size();i++) {
-                    to[i] = list.get(i).getEmail();
+                String[] to = new String[list.size()+1];
+                to[0] = user.getUserEmail();
+                for (int i = 1;i <= list.size();i++) {
+                    to[i] = list.get(i-1).getEmail();
                 }
-                sendEmail(user.getUserEmail(),to,newFilePath);
+                sendEmail(to,newFilePath);
                 return getResultData(true,"","","");
             } catch (MessagingException e) {
                 log.error("#####发送邮件异常",e);
@@ -108,10 +112,10 @@ public class FileUploadController extends BaseApiController {
         }
     }
 
-    void sendEmail(String from,String[] to,String videofilePath) throws MessagingException {
+    void sendEmail(String[] to,String videofilePath) throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-        helper.setFrom(from);
+        helper.setFrom(SEND_EMAIL);
         helper.setTo(to);
         helper.setSubject("主题：模板邮件");
         Map<String, Object> model = new HashedMap();

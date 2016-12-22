@@ -46,9 +46,9 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
 
     @Override
     public void addUserAndEmrgContactList(User user, List<EmrgContact> emrgContactList) {
-        User userDB = userDAO.findByUserPhoneAndEnableFlag(user.getUserPhone(),EnableFlag.Y);
-        if(null != userDB){
-            throw new BusinessException(ErrorCode.USER_REG_EXCEPTION);
+        List<User> userListDB = userDAO.findByUserPhoneAndEnableFlag(user.getUserPhone(),EnableFlag.Y);
+        if(null != userListDB && userListDB.size() > 0){
+            throw new BusinessException(ErrorCode.USER_REG_EXCEPTION,"####用户已存在,userPhone:"+user.getUserPhone());
         }
         Long userId = generateID();
         if (null == user.getCreateBy() || user.getCreateBy() == 0){
