@@ -25,6 +25,9 @@ public class UserController extends BaseController {
         if (null == pageSize || pageSize <= 0){
             pageSize = super.pageSize;
         }
+        if(pageSize > 100){
+            pageSize = 100;
+        }
         PageRequest pageRequest = new PageRequest(pageNumber-1, pageSize);
         Page<User> pageUsers = userService.listBySearch(null, null, null, null, null, pageRequest);
         model.put("pageUsers",pageUsers);
