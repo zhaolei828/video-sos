@@ -1,6 +1,9 @@
-package com.derder.admin.file;
+package com.derder.api.file;
 
 import com.derder.admin.BaseApiController;
+import com.derder.business.model.EmrgContact;
+import com.derder.business.model.User;
+import com.derder.business.service.UserService;
 import com.derder.common.util.DateUtil;
 import com.derder.common.util.ErrorCode;
 import com.derder.common.util.ResultData;
@@ -13,7 +16,11 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.ui.velocity.VelocityEngineUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
@@ -22,6 +29,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,6 +52,9 @@ public class FileUploadController extends BaseApiController {
     private JavaMailSender mailSender;
     @Autowired
     private VelocityEngine velocityEngine;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value="/sendVideo", method= RequestMethod.POST)
     public @ResponseBody
@@ -74,33 +85,44 @@ public class FileUploadController extends BaseApiController {
                         new BufferedOutputStream(new FileOutputStream(new File(newFilePath)));
                 stream.write(bytes);
                 stream.close();
-                return getResultData(true,"","","");
             } catch (Exception e) {
                 log.error("#####文件上传异常",e);
                 return getResultData(false,"",ErrorCode.UPLOAD_FILE_EXCEPTION);
+            }
+
+            try {
+                User user = getUser();
+                List<EmrgContact> list = userService.getEmrgContactListByUser(userId);
+                String[] to = new String[list.size()];
+                for (int i = 0;i<list.size();i++) {
+                    to[i] = list.get(i).getEmail();
+                }
+                sendEmail(user.getUserEmail(),to,newFilePath);
+                return getResultData(true,"","","");
+            } catch (MessagingException e) {
+                log.error("#####发送邮件异常",e);
+                return getResultData(false,"",ErrorCode.SEND_EMAIL_EXCEPTION);
             }
         } else {
             return getResultData(false,"", ErrorCode.UPLOAD_FILE_CANNOT_EMPTY);
         }
     }
 
-    @RequestMapping(value="/testEmail", produces = "application/json; charset=UTF-8")
-    ResultData testEmail() throws MessagingException {
+    void sendEmail(String from,String[] to,String videofilePath) throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-        helper.setFrom("zhaolei828@163.com");
-        helper.setTo("zhaolei828@163.com");
+        helper.setFrom(from);
+        helper.setTo(to);
         helper.setSubject("主题：模板邮件");
         Map<String, Object> model = new HashedMap();
         model.put("username", "didi");
         String text = VelocityEngineUtils.mergeTemplateIntoString(
                 velocityEngine, "template.vm", "UTF-8", model);
         helper.setText(text, true);
-        FileSystemResource file = new FileSystemResource(new File("E:\\idea_workspace\\playground\\video-sos-parent\\video-sos-api\\868855d6996300000125dc94961c.jpg"));
-        helper.addAttachment("附件-1.jpg", file);
-        helper.addAttachment("附件-2.jpg", file);
+        File videofile = new File(videofilePath);
+        FileSystemResource fileSystemResource = new FileSystemResource(videofile);
+        helper.addAttachment(videofile.getName(), fileSystemResource);
         mailSender.send(mimeMessage);
-        return getResultData(true,"","","");
     }
 
     String datePath(){

@@ -16,4 +16,8 @@ public interface ErrorCode {
     String USERNAME_PASSORD_ERROR="100202";
 
     String PARAM_FORMAT_ERROR="100022";
+
+    String SEND_EMAIL_EXCEPTION="100203";
+
+    String USER_REG_EXCEPTION="100204";
 }

@@ -8,7 +8,9 @@ import com.derder.business.model.EmrgContact;
 import com.derder.business.model.QUser;
 import com.derder.business.model.User;
 import com.derder.business.service.UserService;
+import com.derder.common.exception.BusinessException;
 import com.derder.common.util.EnableFlag;
+import com.derder.common.util.ErrorCode;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.mysema.query.types.Predicate;
@@ -44,6 +46,10 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
 
     @Override
     public void addUserAndEmrgContactList(User user, List<EmrgContact> emrgContactList) {
+        User userDB = userDAO.findByUserPhoneAndEnableFlag(user.getUserPhone(),EnableFlag.Y);
+        if(null != userDB){
+            throw new BusinessException(ErrorCode.USER_REG_EXCEPTION);
+        }
         Long userId = generateID();
         if (null == user.getCreateBy() || user.getCreateBy() == 0){
             user.setCreateBy(userId);
