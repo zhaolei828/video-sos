@@ -13,4 +13,6 @@ public interface UserDAO extends BaseDAO<User, Long> {
     User findByUserPhoneAndPasswordAndEnableFlag(String userPhone, String password, EnableFlag enableFlag);
 
     List<User> findByUserPhoneAndEnableFlag(String userPhone, EnableFlag enableFlag);
+
+    User findByIdAndEnableFlag(Long id, EnableFlag enableFlag);
 }

@@ -1,4 +1,4 @@
-package com.derder.admin.user;
+package com.derder.api.user;
 
 import com.derder.admin.BaseApiController;
 import com.derder.business.dto.EmrgContactDTO;
@@ -52,6 +52,25 @@ public class UserController extends BaseApiController {
         return getResultData(true,"","","");
     }
 
+    @RequestMapping(value="/updateUserInfo", method= RequestMethod.POST, produces="application/json; charset=UTF-8")
+    public @ResponseBody
+    ResultData updateUserInfo(@RequestBody String json){
+        //{"id":811816699479855100,"userName":"张三","phoneNumber":"13333311551","email":"zhangsan@126.com","password":"123456","emrgContactList":[{"id":811816699928645600,"name":"王五","email":"wangwu@gmail.com","phoneNumber":"15655115511"}]}
+        long userId = getUserId();
+        UserVO userVO = JsonUtil.parseObject(json,UserVO.class);
+        User user = userVO.convertUser(userVO);
+        user.setUpdateBy(userId);
+        List<EmrgContactVO> emrgContactVOList = userVO.getEmrgContactList();
+        List<EmrgContact> emrgContactList = Lists.newArrayList();
+        for (EmrgContactVO emrgContactVO:emrgContactVOList) {
+            EmrgContact emrgContact = emrgContactVO.convertEmrgContact(emrgContactVO);
+            emrgContact.setUpdateBy(userId);
+            emrgContactList.add(emrgContact);
+        }
+        userService.updateUserAndEmrgContactList(user,emrgContactList);
+        return getResultData(true,"","","");
+    }
+
     @RequestMapping(value="/testCache", produces = "application/json; charset=UTF-8")
     ResultData testCache(){
         cacheService.add("sss","ddd");
@@ -69,9 +88,9 @@ public class UserController extends BaseApiController {
 
     @RequestMapping(value="/getUserInfo", produces = "application/json; charset=UTF-8")
     ResultData getUserInfo(){
-        //return:{"succeed":true,"errorCode":"","errorMsg":"","data":{"userName":"张三","phoneNumber":"13333311551","email":"zhangsan@126.com","emrgContactList":[{"name":"王五","email":"wangwu@gmail.com","phoneNumber":"15655115511"}]}}
+        //return:{"succeed":true,"errorCode":"","errorMsg":"","data":{"id":232342342342,"userName":"张三","phoneNumber":"13333311551","email":"zhangsan@126.com","emrgContactList":[{"name":"王五","email":"wangwu@gmail.com","phoneNumber":"15655115511"}]}}
         User user = getUser();
-        List<EmrgContact> list = userService.getEmrgContactListByUser(user.getID());
+        List<EmrgContact> list = userService.getEmrgContactListByUser(user.getId());
         UserDTO userDTO = user.convertDTO(user);
         List<EmrgContactDTO> emrgContactList = Lists.newArrayList();
         for (EmrgContact emrgContact:list) {

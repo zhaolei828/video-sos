@@ -59,6 +59,7 @@ public class EmrgContact extends BaseModel<Long> {
 
     public EmrgContactDTO convertDTO(EmrgContact emrgContact){
         EmrgContactDTO emrgContactDTO = new EmrgContactDTO();
+        emrgContactDTO.setId(emrgContact.getId());
         emrgContactDTO.setPhoneNumber(emrgContact.getPhone());
         emrgContactDTO.setEmail(emrgContact.getEmail());
         emrgContactDTO.setName(emrgContact.getName());

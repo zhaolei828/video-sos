@@ -9,16 +9,29 @@ import com.derder.business.model.EmrgContact;
  * Time: 下午6:34
  */
 public class EmrgContactDTO {
+    long id;
     String name;
     String email;
     String phoneNumber;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (null == name){
+            this.name = "";
+        }else {
+            this.name = name;
+        }
     }
 
     public String getEmail() {

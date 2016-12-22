@@ -37,7 +37,7 @@ public class LoginServiceImpl extends BaseDomainService implements LoginService 
         User user = userService.checkLogin(phone,password);
         if (null != user){
             String token = createToken();
-            cacheService.add(Constants.CACHE_PREFIX_TOKEN + token,user.getID());
+            cacheService.add(Constants.CACHE_PREFIX_TOKEN + token,user.getId());
             return token;
         }
         return null;

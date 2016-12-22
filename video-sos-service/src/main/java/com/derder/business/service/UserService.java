@@ -20,6 +20,8 @@ public interface UserService {
 
     void addUserAndEmrgContactList(User user, List<EmrgContact> emrgContactList);
 
+    void updateUserAndEmrgContactList(User user, List<EmrgContact> emrgContactList);
+
     User getUser(long userId);
 
     List<EmrgContact> getEmrgContactListByUser(long userId);

@@ -9,9 +9,18 @@ import com.derder.business.model.EmrgContact;
  * Time: 下午6:34
  */
 public class EmrgContactVO {
+    long id;
     String name;
     String email;
     String phoneNumber;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -39,6 +48,7 @@ public class EmrgContactVO {
 
     public EmrgContact convertEmrgContact(EmrgContactVO emrgContactVO){
         EmrgContact emrgContact = new EmrgContact();
+        emrgContact.setId(emrgContactVO.getId());
         emrgContact.setName(emrgContactVO.getName());
         emrgContact.setEmail(emrgContactVO.getEmail());
         emrgContact.setPhone(emrgContactVO.getPhoneNumber());

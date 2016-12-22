@@ -13,4 +13,6 @@ import java.util.List;
 @Repository
 public interface EmrgContactDAO extends BaseDAO<EmrgContact,Long> {
     List<EmrgContact> findByBandUserAndEnableFlag(long userId, EnableFlag enableFlag);
+
+    EmrgContact findByIdAndEnableFlag(long id,EnableFlag enableFlag);
 }

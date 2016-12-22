@@ -10,10 +10,19 @@ import java.util.List;
  * 编码作者：zhaolei
  */
 public class UserDTO {
+    long id;
     String userName;
     String phoneNumber;
     String email;
     List<EmrgContactDTO> emrgContactList;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;

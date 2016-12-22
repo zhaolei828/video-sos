@@ -22,7 +22,7 @@ public class BaseModel<PK extends Serializable> implements Persistable<PK> {
     @Id
     @GeneratedValue(generator = Constants.SYSTEM_GENERATOR)
     @Column(name = "ID")
-    private PK ID;
+    private PK id;
 
     @Enumerated(EnumType.STRING)
     @Column(length=1,nullable=false,name = "ENABLE_FLAG")
@@ -42,12 +42,13 @@ public class BaseModel<PK extends Serializable> implements Persistable<PK> {
     @Column(name = "UPDATE_TIME")
     private Date updateTime;
 
-    public PK getID() {
-        return ID;
+    @Override
+    public PK getId() {
+        return id;
     }
 
-    public void setID(PK ID) {
-        this.ID = ID;
+    public void setId(PK id) {
+        this.id = id;
     }
 
     public EnableFlag getEnableFlag() {
@@ -88,11 +89,6 @@ public class BaseModel<PK extends Serializable> implements Persistable<PK> {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    @Override
-    public PK getId() {
-        return ID;
     }
 
     @Override

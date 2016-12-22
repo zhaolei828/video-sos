@@ -58,7 +58,7 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
             user.setUpdateBy(userId);
         }
         Timestamp now = new Timestamp(new Date().getTime());
-        user.setID(userId);
+        user.setId(userId);
         user.setCreateBy(user.getCreateBy());
         user.setCreateTime(now);
         user.setUpdateBy(user.getUpdateBy());
@@ -72,7 +72,7 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
             if (null == emrgContact.getUpdateBy() || emrgContact.getUpdateBy() == 0){
                 emrgContact.setUpdateBy(userId);
             }
-            emrgContact.setID(contactId);
+            emrgContact.setId(contactId);
             emrgContact.setCreateBy(emrgContact.getCreateBy());
             emrgContact.setCreateTime(now);
             emrgContact.setUpdateBy(emrgContact.getUpdateBy());
@@ -80,6 +80,44 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
             emrgContact.setBandUser(userId);
         }
         emrgContactDAO.save(emrgContactList);
+    }
+
+    @Override
+    public void updateUserAndEmrgContactList(User user, List<EmrgContact> emrgContactList) {
+        User  userDB = userDAO.findByIdAndEnableFlag(user.getId(),EnableFlag.Y);
+        if(null == userDB){
+            throw new BusinessException(ErrorCode.USER_NOT_EXIST_EXCEPTION,"####用户不存在,userPhone:"+user.getId());
+        }
+        if (!Strings.isNullOrEmpty(user.getUserName())){
+            userDB.setUserName(user.getUserName());
+        }
+        if (!Strings.isNullOrEmpty(user.getUserEmail())){
+            userDB.setUserEmail(user.getUserEmail());
+        }
+        if (null != user.getUpdateBy() || user.getUpdateBy()>0){
+            userDB.setUpdateBy(user.getUpdateBy());
+        }
+        userDB.setUpdateTime(new Date());
+        userDAO.save(userDB);
+        for (EmrgContact emrgContact : emrgContactList){
+            EmrgContact emrgContactDB = emrgContactDAO.findByIdAndEnableFlag(emrgContact.getId(),EnableFlag.Y);
+            if(null != emrgContactDB){
+                if (!Strings.isNullOrEmpty(emrgContact.getName())){
+                    emrgContactDB.setName(emrgContact.getName());
+                }
+                if (!Strings.isNullOrEmpty(emrgContact.getPhone())){
+                    emrgContactDB.setPhone(emrgContact.getPhone());
+                }
+                if (!Strings.isNullOrEmpty(emrgContact.getEmail())){
+                    emrgContactDB.setEmail(emrgContact.getEmail());
+                }
+                if (null != emrgContact.getUpdateBy() || emrgContact.getUpdateBy()>0){
+                    emrgContactDB.setUpdateBy(emrgContact.getUpdateBy());
+                }
+                emrgContactDB.setUpdateTime(new Date());
+            }
+            emrgContactDAO.save(emrgContactDB);
+        }
     }
 
     @Override

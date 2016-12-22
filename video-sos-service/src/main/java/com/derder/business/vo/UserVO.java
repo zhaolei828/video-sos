@@ -12,11 +12,20 @@ import java.util.List;
  * Time: 下午6:32
  */
 public class UserVO {
+    long id;
     String userName;
     String phoneNumber;
     String email;
     String password;
     List<EmrgContactVO> emrgContactList;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;
@@ -60,6 +69,7 @@ public class UserVO {
 
     public User convertUser(UserVO userVO){
         User user = new User();
+        user.setId(userVO.getId());
         user.setUserName(userVO.getUserName());
         user.setPassword(userVO.getPassword());
         user.setUserEmail(userVO.getEmail());
