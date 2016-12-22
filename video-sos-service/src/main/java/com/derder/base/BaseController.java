@@ -15,7 +15,7 @@ public abstract class BaseController
 {
     public static int pageNumber = 1;
 
-    public static int pageSize = 10;
+    public static int pageSize = 2;
 
     protected <T> ResultData<T> getResultData(boolean succeed, T data, String errorCode, Object... args)
     {

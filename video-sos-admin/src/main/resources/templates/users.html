@@ -34,7 +34,7 @@
                     <th>邮箱</th>
                     <th>创建时间</th>
                 </tr>
-                <tr th:each="user : ${users}">
+                <tr th:each="user : ${pageUsers.content}">
                     <td th:text="${user.userName}">Onions</td>
                     <td th:text="${user.userPhone}">2.41</td>
                     <td th:text="${user.userEmail}">yes</td>
@@ -43,13 +43,11 @@
             </table>
             <nav class="pull-right">
                 <ul class="pagination">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
+                    <li th:class="${pageUsers.first} ? 'disabled' : ''"><a href="users.html?pageNumber=1">&laquo;</a></li>
+                    <li th:each="pageNo : ${#numbers.sequence(0, pageUsers.totalPages - 1)}" th:class="${pageUsers.number eq pageNo}? 'active' : ''">
+                        <a th:href="@{users.html(pageNumber=${pageNo + 1})}" th:text="${pageNo + 1}"></a>
+                    </li>
+                    <li th:class="${pageUsers.last} ? 'disabled' : ''"><a th:href="@{users.html(pageNumber=${pageUsers.totalPages})}">&raquo;</a></li>
                 </ul>
             </nav>
         </div>

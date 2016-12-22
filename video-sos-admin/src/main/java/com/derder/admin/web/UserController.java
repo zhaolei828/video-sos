@@ -17,10 +17,17 @@ public class UserController extends BaseController {
     UserService userService;
 
     @RequestMapping("/users")
-    public String userList(Map<String, Object> model) {
-        PageRequest pageRequest = new PageRequest(0, 10);
-        Page<User> users = userService.listBySearch(null, null, null, null, null, pageRequest);
-        model.put("users",users);
+    public String userList(Map<String, Object> model,
+                           Integer pageNumber,Integer pageSize) {
+        if (null == pageNumber || pageNumber<=0){
+            pageNumber = super.pageNumber;
+        }
+        if (null == pageSize || pageSize <= 0){
+            pageSize = super.pageSize;
+        }
+        PageRequest pageRequest = new PageRequest(pageNumber-1, pageSize);
+        Page<User> pageUsers = userService.listBySearch(null, null, null, null, null, pageRequest);
+        model.put("pageUsers",pageUsers);
         return "users";
     }
 }
