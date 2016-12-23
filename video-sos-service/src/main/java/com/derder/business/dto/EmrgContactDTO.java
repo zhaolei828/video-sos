@@ -1,7 +1,5 @@
 package com.derder.business.dto;
 
-import com.derder.business.model.EmrgContact;
-
 /**
  * Created with IntelliJ IDEA.
  * User: zhaolei
@@ -10,6 +8,7 @@ import com.derder.business.model.EmrgContact;
  */
 public class EmrgContactDTO {
     long id;
+    String strId;
     String name;
     String email;
     String phoneNumber;
@@ -20,6 +19,14 @@ public class EmrgContactDTO {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getStrId() {
+        return strId;
+    }
+
+    public void setStrId(String strId) {
+        this.strId = strId;
     }
 
     public String getName() {
@@ -48,13 +55,5 @@ public class EmrgContactDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public EmrgContact convertEmrgContact(EmrgContactDTO emrgContactVO){
-        EmrgContact emrgContact = new EmrgContact();
-        emrgContact.setName(emrgContactVO.getName());
-        emrgContact.setEmail(emrgContactVO.getEmail());
-        emrgContact.setPhone(emrgContactVO.getPhoneNumber());
-        return  emrgContact;
     }
 }

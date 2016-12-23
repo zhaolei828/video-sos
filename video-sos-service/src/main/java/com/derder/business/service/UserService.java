@@ -24,6 +24,8 @@ public interface UserService {
 
     User getUser(long userId);
 
+    void delUser(User user);
+
     List<EmrgContact> getEmrgContactListByUser(long userId);
 
     Page<User> listBySearch(String userNameKw, String phoneNumber, String email, String startDate, String endDate, PageRequest pageRequest);

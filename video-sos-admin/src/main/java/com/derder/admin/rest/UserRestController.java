@@ -8,6 +8,7 @@ import com.derder.business.model.User;
 import com.derder.business.service.UserService;
 import com.derder.business.vo.EmrgContactVO;
 import com.derder.business.vo.UserVO;
+import com.derder.common.util.EnableFlag;
 import com.derder.common.util.JsonUtil;
 import com.derder.common.util.ResultData;
 import com.google.common.collect.Lists;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -54,6 +56,16 @@ public class UserRestController extends BaseAdminController {
         }
         userDTO.setEmrgContactList(emrgContactList);
         return getResultData(true,userDTO,"","");
+    }
+
+    @RequestMapping("/delUser")
+    public ResultData delUser(Long userId) {
+        User user = userService.getUser(userId);
+        user.setEnableFlag(EnableFlag.N);
+        user.setUpdateBy(userId);
+        user.setUpdateTime(new Date());
+        userService.delUser(user);
+        return getResultData(true,"","","");
     }
 
     @RequestMapping(value="/updateUser", method= RequestMethod.POST, produces="application/json; charset=UTF-8")

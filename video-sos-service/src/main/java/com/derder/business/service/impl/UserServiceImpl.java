@@ -86,7 +86,7 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
     public void updateUserAndEmrgContactList(User user, List<EmrgContact> emrgContactList) {
         User  userDB = userDAO.findByIdAndEnableFlag(user.getId(),EnableFlag.Y);
         if(null == userDB){
-            throw new BusinessException(ErrorCode.USER_NOT_EXIST_EXCEPTION,"####用户不存在,userPhone:"+user.getId());
+            throw new BusinessException(ErrorCode.USER_NOT_EXIST_EXCEPTION,"####用户不存在,userId:"+user.getId());
         }
         if (!Strings.isNullOrEmpty(user.getUserName())){
             userDB.setUserName(user.getUserName());
@@ -123,6 +123,12 @@ public class UserServiceImpl extends BaseDomainService implements UserService {
     @Override
     public User getUser(long userId) {
         return userDAO.findOne(userId);
+    }
+
+    @Override
+    public void delUser(User user) {
+        user.setEnableFlag(EnableFlag.N);
+        userDAO.save(user);
     }
 
     @Override

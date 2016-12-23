@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class UserDTO {
     long id;
+    String strId;
     String userName;
     String phoneNumber;
     String email;
@@ -22,6 +23,14 @@ public class UserDTO {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getStrId() {
+        return strId;
+    }
+
+    public void setStrId(String strId) {
+        this.strId = strId;
     }
 
     public String getUserName() {

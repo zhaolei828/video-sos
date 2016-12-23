@@ -71,6 +71,7 @@ public class User extends BaseModel<Long> {
     public UserDTO convertDTO(User user){
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
+        userDTO.setStrId(user.getId()+"");
         userDTO.setEmail(user.getUserEmail());
         userDTO.setPhoneNumber(user.getUserPhone());
         userDTO.setUserName(user.getUserName());

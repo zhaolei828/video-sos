@@ -32,14 +32,13 @@ function getOne(id){
       method: "GET",
       url: "user?userId="+id,
     })
-    .done(function( data ) {
-        var user = data.data;
-        alert(user.id);
-        $("#inputUpdateUserId").val(user.id);
+    .done(function( res ) {
+        var user = res.data;
+        $("#inputUpdateUserId").val(user.strId);
         $("#inputUpdateUsername").val(user.userName);
         $("#inputUpdateEmail").val(user.email);
         $("#inputUpdatePhoneNumber").val(user.phoneNumber);
-        $("#inputUpdateEmrgId").val(user.emrgContactList[0].id);
+        $("#inputUpdateEmrgId").val(user.emrgContactList[0].strId);
         $("#inputUpdateJJPhoneNumber").val(user.emrgContactList[0].phoneNumber);
         $("#inputUpdateVideoEmail").val(user.emrgContactList[0].email);
     });
@@ -74,6 +73,20 @@ function update(){
       data: JSON.stringify(data)
     })
     .done(function( msg ) {
+        location.reload();
+    });
+}
+
+function openDel(id){
+    $("#inputDeleteUserId").val(id);
+}
+function del(){
+var userId = $("#inputDeleteUserId").val();
+ $.ajax({
+      method: "GET",
+      url: "delUser?userId="+userId,
+    })
+    .done(function( res ) {
         location.reload();
     });
 }
