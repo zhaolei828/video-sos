@@ -16,6 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+            .csrf().disable()
             .authorizeRequests()
             //.antMatchers("/", "/home").permitAll()
             .anyRequest().authenticated()
@@ -31,6 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .inMemoryAuthentication()
-            .withUser("user").password("123456").roles("USER");
+            .withUser("user").password("123456").roles("ADMIN");
     }
 }
