@@ -45,4 +45,6 @@ public abstract class BaseDomainService
     {
         return JsonUtil.parseArray(text, clazz);
     }
+
+    protected int commonLimitNum = 10;
 }
