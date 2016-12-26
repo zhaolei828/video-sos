@@ -9,11 +9,13 @@ import com.derder.business.service.LoginService;
 import com.derder.business.service.UserService;
 import com.derder.business.vo.EmrgContactVO;
 import com.derder.business.vo.UserVO;
+import com.derder.common.exception.BusinessException;
 import com.derder.common.redis.CacheService;
 import com.derder.common.util.ErrorCode;
 import com.derder.common.util.JsonUtil;
 import com.derder.common.util.ResultData;
 import com.google.common.collect.Lists;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,7 @@ import java.util.List;
  */
 @RestController
 public class UserController extends BaseApiController {
+    private final Logger log = Logger.getLogger(getClass());
     @Autowired
     UserService userService;
 
@@ -48,7 +51,17 @@ public class UserController extends BaseApiController {
             EmrgContact emrgContact = emrgContactVO.convertEmrgContact(emrgContactVO);
             emrgContactList.add(emrgContact);
         }
-        userService.addUserAndEmrgContactList(user,emrgContactList);
+        try {
+            userService.addUserAndEmrgContactList(user,emrgContactList);
+        } catch (BusinessException e) {
+            if (null != e.getErrorCode() && e.getErrorCode().equals(ErrorCode.USER_REG_EXCEPTION)){
+                return getResultData(false,"",ErrorCode.USER_REG_EXCEPTION);
+            }
+            log.error(e);
+        } catch (Exception e){
+            log.error("####注册信息保存失败",e);
+            return getResultData(false,"",ErrorCode.SYSTEM_ERROR);
+        }
         return getResultData(true,"","","");
     }
 
@@ -79,9 +92,13 @@ public class UserController extends BaseApiController {
 
     @RequestMapping(value="/doLogin",method= RequestMethod.POST, produces = "application/json; charset=UTF-8")
     ResultData handleLogin(String phone,String password){
+
         String token = loginService.login(phone,password);
         if (null != token){
             return getResultData(true,token,"","");
+        }else {
+            log.error("####"+ErrorCode.USERNAME_PASSORD_ERROR+"\n"
+            +"param==> phone:"+phone+" | password:"+password);
         }
         return getResultData(false,"", ErrorCode.USERNAME_PASSORD_ERROR);
     }

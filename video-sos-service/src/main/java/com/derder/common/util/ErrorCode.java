@@ -8,6 +8,8 @@ package com.derder.common.util;
  * 编码作者：zhaolei
  */
 public interface ErrorCode {
+    String SYSTEM_ERROR = "100002";
+
     String NO_LOGIN_EXCEPTION = "600001";
     String PARAM_FORMAT_ERROR="100022";
 
