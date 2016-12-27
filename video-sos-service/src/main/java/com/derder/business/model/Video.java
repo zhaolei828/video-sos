@@ -19,7 +19,7 @@ public class Video extends BaseModel<Long> {
     private String videoPath;
     private Date uploadTime;
     private long uploadUser;
-    private int privice;
+    private int provice;
     private String cityCode;
     private int district;
     private String uploadAddressJson;
@@ -56,12 +56,12 @@ public class Video extends BaseModel<Long> {
         this.uploadUser = uploadUser;
     }
 
-    public int getPrivice() {
-        return privice;
+    public int getProvice() {
+        return provice;
     }
 
-    public void setPrivice(int privice) {
-        this.privice = privice;
+    public void setProvice(int provice) {
+        this.provice = provice;
     }
 
     public String getCityCode() {
