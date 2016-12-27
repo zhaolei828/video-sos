@@ -11,6 +11,244 @@ MySQL - 8.0.0-dmr-log : Database - video_sos
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*Table structure for table `city` */
+
+DROP TABLE IF EXISTS `city`;
+
+CREATE TABLE `city` (
+  `CITY_CODE` varchar(8) DEFAULT NULL,
+  `CITY` varchar(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `city` */
+
+insert  into `city`(`CITY_CODE`,`CITY`) values ('010','北京市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('022','天津市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('021','上海市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('023','重庆市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0311','石家庄市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0310','邯郸市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0319','邢台市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0312','保定市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0313','张家口市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0314','承德市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0315','唐山市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0335','秦皇岛市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0317','沧州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0316','廊坊市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0318','衡水市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0591','福州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0592','厦门市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0598','三明市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0594','莆田市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0595','泉州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0596','漳州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0599','南平市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0593','宁德市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0597','龙岩市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0791','南昌市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0798','景德镇市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0790','新余市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0792','九江市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0701','鹰潭市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0793','上饶市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0795','宜春市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0794','临川市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0796','吉安市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0797','赣州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0531','济南市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0532','青岛市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0533','淄博市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0536','潍坊市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0535','烟台市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0631','威海市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0537','兖州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0633','日照市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0534','德州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0530','郓城县');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0351','太原市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0352','大同市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0353','阳泉市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0355','长治市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0349','朔州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0354','榆次市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0358','孝义市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0357','临汾市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0359','运城市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0471','呼和浩特');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0472','包头市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0476','巴林左旗');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0479','二连浩特市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0470','满洲里市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0475','通辽市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0477','准格尔旗');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0482','乌兰浩特市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0371','郑州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0378','开封市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0379','洛阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0373','新乡市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0393','濮阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0370','商丘市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0377','南阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0394','周口市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0396','汝南县');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('024','沈阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0411','大连市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0412','鞍山市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0413','抚顺市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0414','本溪市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0415','丹东市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0416','锦州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0417','营口市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0418','阜新市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0419','辽阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0410','铁岭市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('027','武汉市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0714','黄石市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0710','襄樊市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0719','十堰市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0717','宜昌市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0714','荆门市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0712','孝感市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0713','黄冈市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0718','恩施市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0716','荆沙');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0431','长春市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0423','吉林市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0434','四平市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0437','辽源市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0435','通化市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0439','临江市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0436','大安市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0433','敦化市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0440','珲春市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0731','长沙市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0733','株州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0732','湘潭市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0734','衡阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0730','岳阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0736','常德市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0735','郴州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0737','益阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0746','冷水滩');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0745','怀化市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0744','张家界');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0451','哈尔滨市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0452','齐齐哈尔市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0459','大庆市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0458','伊春市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0453','牡丹江市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0454','佳木斯市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0455','缓化市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0457','漠河县');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0456','黑河市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('020','广州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0755','深圳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0756','珠海市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0754','汕头市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0751','韶关市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0752','惠州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0769','东莞市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0760','中山市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0757','佛山市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0759','湛江市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('025','南京市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0516','徐州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0518','连云港市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0517','淮安市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0527','宿迁市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0515','盐城市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0514','扬州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0513','南通市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0511','镇江市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0519','常州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0510','无锡市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0512','苏州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0520','常熟市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0771','南宁市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0772','柳州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0773','桂林市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0774','梧州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0779','北海市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0777','钦州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0898','海口市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0899','三亚市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0890','儋州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('028','成都市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0812','攀枝花市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0838','德阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0816','绵阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0813','自贡市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0832','内江市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0833','乐山市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0830','泸州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0831','宜宾市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0571','杭州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0574','宁波市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0573','嘉兴市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0572','湖州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0575','绍兴市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0579','金华市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0570','衢州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0580','舟山市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0577','温州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0576','台州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0851','贵阳市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0852','遵义市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0853','安顺市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0858','六盘水市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0551','合肥市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0554','淮南市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0552','蚌埠市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0555','马鞍山市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0556','安庆市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0559','黄山市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0550','滁州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0557','宿州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0565','巢湖市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0563','宣州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0871','昆明市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0870','昭通市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0874','曲靖市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0877','江川市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0879','思茅市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0888','丽江县');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0873','开远市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0878','楚雄市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('029','西安市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0919','铜川市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0917','宝鸡市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0913','渭南市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0914','商州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0891','拉萨市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0892','日喀则市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0801','仁布县');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0805','丁青县');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0897','阿里地区');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0931','兰州市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0935','金昌市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0938','天水市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0933','平凉市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0937','玉门市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0937','敦煌市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0971','西宁市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0972','平安县');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0979','格尔木市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0975','玛沁县');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0951','银川市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0952','石嘴山市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0953','青铜峡市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0954','海原县');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0991','乌鲁木齐市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0990','克拉玛依市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0995','吐鲁番市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0998','喀什市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0908','阿图什市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0996','库尔勒市');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0085','香港');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0085','澳门');
+insert  into `city`(`CITY_CODE`,`CITY`) values ('0088','台湾');
+
 /*Table structure for table `emrg_contact` */
 
 DROP TABLE IF EXISTS `emrg_contact`;
@@ -31,7 +269,20 @@ CREATE TABLE `emrg_contact` (
 
 /*Data for the table `emrg_contact` */
 
-insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (810740134051188736,'王五','wangwu@gmail.com','15655115511',810740132553822208,'Y',810740132553822208,'2016-12-19 14:54:45',810740132553822208,'2016-12-19 14:54:45');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (810740134051188736,NULL,'wangwu1695@gmail.com','1888888881',810740132553822208,'Y',810740132553822208,'2016-12-19 14:54:45',810740132553822208,'2016-12-23 10:08:54');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811450197311754240,NULL,'wangwu@gmail.com','15655115511',811450196456116224,'Y',811450196456116224,'2016-12-21 13:56:18',811450196456116224,'2016-12-21 13:56:18');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811492483282243584,NULL,'wangwu@gmail.com','15655115511',811492482829258752,'Y',811492482829258752,'2016-12-21 16:44:19',811492482829258752,'2016-12-21 16:44:19');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811498286957465600,NULL,'wangwu@gmail.com','15655115511',811498286730973184,'Y',811498286730973184,'2016-12-21 17:07:23',811498286730973184,'2016-12-21 17:07:23');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811498688956338176,NULL,'4554832932@qq.com','18969693636',811498688792760320,'Y',811498688792760320,'2016-12-21 17:08:59',811498688792760320,'2016-12-21 17:08:59');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811509077563674624,NULL,'18025346641','18025346641',811509077198770176,'Y',811509077198770176,'2016-12-21 17:50:16',811509077198770176,'2016-12-21 17:50:16');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811770391961669632,NULL,'18025346641','18025346641',811770391525462016,'Y',811770391525462016,'2016-12-22 11:08:38',811770391525462016,'2016-12-22 11:08:38');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811770627371175936,NULL,'18025346641','18025346641',811770627027243008,'Y',811770627027243008,'2016-12-22 11:09:34',811770627027243008,'2016-12-22 11:09:34');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811816699928645632,NULL,'455483293@qq.com','17080340288',811816699479855104,'Y',811816699479855104,'2016-12-22 14:12:39',811816699479855104,'2016-12-22 14:12:39');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (812176458632007680,'','11','11',812176458040610816,'Y',812176458040610816,'2016-12-23 14:02:12',812176458040610816,'2016-12-23 14:02:12');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (812180754392027136,'','15912326515','15912326515',812180754194894848,'Y',812180754194894848,'2016-12-23 14:19:16',812180754194894848,'2016-12-23 14:19:16');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (812180935481102336,'','16831561852','16831561852',812180935267192832,'Y',812180935267192832,'2016-12-23 14:19:59',812180935267192832,'2016-12-23 14:19:59');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (812197989929455616,NULL,'455483293@qq.com','17080340288',812197988805382144,'Y',812197988805382144,'2016-12-23 15:27:45',812197988805382144,'2016-12-23 15:27:45');
+insert  into `emrg_contact`(`ID`,`EMRG_CONTACT_NAME`,`ENRG_CONTACT_EMAIL`,`EMRG_CONTACT_PHONE`,`BAND_USER`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (813221095870042112,NULL,'455483293@qq.com','17080340288',813221095521914880,'Y',813221095521914880,'2016-12-26 11:13:13',813221095521914880,'2016-12-26 11:13:13');
 
 /*Table structure for table `region` */
 
@@ -3624,7 +3875,15 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (810740132553822208,'张三','zhangsan@126.com','13333311551','123456','0','Y',810740132553822208,'2016-12-19 14:54:45',810740132553822208,'2016-12-19 14:54:45');
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (810740132553822208,'张三改','zhangsan@126.com','13333311551','123456','0','Y',810740132553822208,'2016-12-19 14:54:45',810740132553822208,'2016-12-23 10:08:54');
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811498688792760320,'duanlei','4554832932@qq.com','13663639696',NULL,'0','Y',811498688792760320,'2016-12-21 17:08:59',811498688792760320,'2016-12-21 17:08:59');
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811770627027243008,'duanlei','455483293@qq.com','17080340288','123456','0','Y',811770627027243008,'2016-12-22 11:09:34',811770627027243008,'2016-12-22 11:09:34');
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (811816699479855104,'11','888@qq.com','18888888888','123456','0','Y',811816699479855104,'2016-12-22 14:12:39',811816699479855104,'2016-12-22 14:12:39');
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (812176458040610816,'1','1','1',NULL,'0','Y',812176458040610816,'2016-12-23 14:02:12',812176458040610816,'2016-12-23 14:02:12');
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (812180754194894848,'阿里','ali233@ali.com','15515513315',NULL,'0','Y',812180754194894848,'2016-12-23 14:19:16',812180754194894848,'2016-12-23 14:19:16');
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (812180935267192832,'黑曼','himan@174.com','13322121521',NULL,'0','Y',812180935267192832,'2016-12-23 14:19:59',812180935267192832,'2016-12-23 14:19:59');
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (812197988805382144,'6666','455483293@qq.com','13333333333','123456','0','Y',812197988805382144,'2016-12-23 15:27:45',812197988805382144,'2016-12-23 15:27:45');
+insert  into `user`(`ID`,`USER_NAME`,`USER_EMAIL`,`USER_PHONE`,`PASSWORD`,`USER_GROUP`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`) values (813221095521914880,'6666','455483293@qq.com','13311112222','123456','0','Y',813221095521914880,'2016-12-26 11:13:13',813221095521914880,'2016-12-26 11:13:13');
 
 /*Table structure for table `video` */
 
@@ -3637,7 +3896,7 @@ CREATE TABLE `video` (
   `UPLOAD_TIME` datetime DEFAULT NULL,
   `UPLOAD_USER` bigint(20) DEFAULT NULL,
   `PROVICE` int(11) DEFAULT NULL,
-  `CITY` int(11) DEFAULT NULL,
+  `CITY_CODE` varchar(8) DEFAULT NULL,
   `DISTRICT` int(11) DEFAULT NULL,
   `UPLOAD_ADDRESS_JSON` varchar(500) DEFAULT NULL,
   `ENABLE_FLAG` varchar(1) DEFAULT 'Y',
@@ -3645,10 +3904,18 @@ CREATE TABLE `video` (
   `CREATE_TIME` datetime DEFAULT NULL,
   `UPDATE_BY` bigint(20) DEFAULT NULL,
   `UPDATE_TIME` datetime DEFAULT NULL,
+  `privice` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `video` */
+
+insert  into `video`(`ID`,`VIDEO_NAME`,`VIDEO_PATH`,`UPLOAD_TIME`,`UPLOAD_USER`,`PROVICE`,`CITY_CODE`,`DISTRICT`,`UPLOAD_ADDRESS_JSON`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`,`privice`) values (813268558179471360,'810740132553822208_1482733304103.jpg','E:\\upload\\2016\\12\\26\\810740132553822208_1482733304103.jpg','2016-12-26 14:21:49',810740132553822208,NULL,'0755',0,'{}','Y',810740132553822208,'2016-12-26 14:21:49',810740132553822208,'2016-12-26 14:21:49',0);
+insert  into `video`(`ID`,`VIDEO_NAME`,`VIDEO_PATH`,`UPLOAD_TIME`,`UPLOAD_USER`,`PROVICE`,`CITY_CODE`,`DISTRICT`,`UPLOAD_ADDRESS_JSON`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`,`privice`) values (813275116233822208,'813221095521914880_1482734863454.mp4','E:\\upload\\2016\\12\\26\\813221095521914880_1482734863454.mp4','2016-12-26 14:47:52',813221095521914880,NULL,'0710',0,'{}','Y',813221095521914880,'2016-12-26 14:47:52',813221095521914880,'2016-12-26 14:47:52',0);
+insert  into `video`(`ID`,`VIDEO_NAME`,`VIDEO_PATH`,`UPLOAD_TIME`,`UPLOAD_USER`,`PROVICE`,`CITY_CODE`,`DISTRICT`,`UPLOAD_ADDRESS_JSON`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`,`privice`) values (813275383549399040,'813221095521914880_1482734928231.mp4','E:\\upload\\2016\\12\\26\\813221095521914880_1482734928231.mp4','2016-12-26 14:48:56',813221095521914880,NULL,'0710',0,'{}','Y',813221095521914880,'2016-12-26 14:48:56',813221095521914880,'2016-12-26 14:48:56',0);
+insert  into `video`(`ID`,`VIDEO_NAME`,`VIDEO_PATH`,`UPLOAD_TIME`,`UPLOAD_USER`,`PROVICE`,`CITY_CODE`,`DISTRICT`,`UPLOAD_ADDRESS_JSON`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`,`privice`) values (813304678418223104,'813221095521914880_1482741911316.mp4','E:\\upload\\2016\\12\\26\\813221095521914880_1482741911316.mp4','2016-12-26 16:45:20',813221095521914880,NULL,NULL,0,'{}','Y',813221095521914880,'2016-12-26 16:45:20',813221095521914880,'2016-12-26 16:45:20',0);
+insert  into `video`(`ID`,`VIDEO_NAME`,`VIDEO_PATH`,`UPLOAD_TIME`,`UPLOAD_USER`,`PROVICE`,`CITY_CODE`,`DISTRICT`,`UPLOAD_ADDRESS_JSON`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`,`privice`) values (813305145042931712,'813221095521914880_1482742026083.mp4','E:\\upload\\2016\\12\\26\\813221095521914880_1482742026083.mp4','2016-12-26 16:47:12',813221095521914880,NULL,'0755',440304,'{\"adCode\":\"440304\",\"address\":\"广东省深圳市福田区椰林大道靠近深圳文化创意园A座\",\"city\":\"深圳市\",\"cityCode\":\"0755\",\"district\":\"福田区\",\"province\":\"广东省\",\"longitude\":114.044675,\"latitude\":22.518838}','Y',813221095521914880,'2016-12-26 16:47:12',813221095521914880,'2016-12-26 16:47:12',0);
+insert  into `video`(`ID`,`VIDEO_NAME`,`VIDEO_PATH`,`UPLOAD_TIME`,`UPLOAD_USER`,`PROVICE`,`CITY_CODE`,`DISTRICT`,`UPLOAD_ADDRESS_JSON`,`ENABLE_FLAG`,`CREATE_BY`,`CREATE_TIME`,`UPDATE_BY`,`UPDATE_TIME`,`privice`) values (813305156791177216,'813221095521914880_1482742030945.mp4','E:\\upload\\2016\\12\\26\\813221095521914880_1482742030945.mp4','2016-12-26 16:47:15',813221095521914880,NULL,'0755',440304,'{\"adCode\":\"440304\",\"address\":\"广东省深圳市福田区椰林大道靠近深圳文化创意园A座\",\"city\":\"深圳市\",\"cityCode\":\"0755\",\"district\":\"福田区\",\"province\":\"广东省\",\"longitude\":114.044675,\"latitude\":22.518838}','Y',813221095521914880,'2016-12-26 16:47:15',813221095521914880,'2016-12-26 16:47:15',0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
