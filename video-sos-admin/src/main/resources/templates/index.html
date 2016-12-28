@@ -36,7 +36,7 @@
                 <tr th:each="cityUserStat : ${cityUserStatList}">
                     <td th:text="${cityUserStat.city}">深圳</td>
                     <td th:text="${cityUserStat.count}">0</td>
-                    <td><!--<a th:href="@{users.html(pageNumber=${pageUsers.totalPages})}">-->详情<!--</a>--></td>
+                    <td><a th:href="@{stat_detail.html(cityCode=${cityUserStat.cityCode})}">详情</a></td>
                 </tr>
             </table>
         </div>

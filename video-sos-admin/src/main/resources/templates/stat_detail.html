@@ -27,16 +27,67 @@
             </div>
         </div>
         <div class="col-md-8">
+            <div>深圳</div>
             <table class="table table-hover">
                 <tr>
-                    <th>城市</th>
-                    <th>用户量</th>
-                    <th></th>
+                    <th>日期</th>
+                    <th>日用户量</th>
+                    <th>周用户量</th>
+                    <th>月用户量</th>
+                    <th>00:00 ~ 01:00</th>
+                    <th>01:00 ~ 02:00</th>
+                    <th>02:00 ~ 03:00</th>
+                    <th>03:00 ~ 04:00</th>
+                    <th>04:00 ~ 05:00</th>
+                    <th>05:00 ~ 06:00</th>
+                    <th>06:00 ~ 07:00</th>
+                    <th>07:00 ~ 08:00</th>
+                    <th>08:00 ~ 09:00</th>
+                    <th>09:00 ~ 10:00</th>
+                    <th>10:00 ~ 11:00</th>
+                    <th>11:00 ~ 12:00</th>
+                    <th>12:00 ~ 13:00</th>
+                    <th>13:00 ~ 14:00</th>
+                    <th>14:00 ~ 15:00</th>
+                    <th>15:00 ~ 16:00</th>
+                    <th>16:00 ~ 17:00</th>
+                    <th>17:00 ~ 18:00</th>
+                    <th>18:00 ~ 19:00</th>
+                    <th>19:00 ~ 20:00</th>
+                    <th>20:00 ~ 21:00</th>
+                    <th>21:00 ~ 22:00</th>
+                    <th>22:00 ~ 23:00</th>
+                    <th>23:00 ~ 24:00</th>
                 </tr>
-                <tr th:each="cityUserStat : ${cityUserStatList}">
-                    <td th:text="${cityUserStat.city}">深圳</td>
-                    <td th:text="${cityUserStat.count}">0</td>
-                    <td><!--<a th:href="@{users.html(pageNumber=${pageUsers.totalPages})}">-->详情<!--</a>--></td>
+                <tr th:each="cityUserStatDetail : ${cityUserStatDetailList}">
+                    <td th:text="${cityUserStatDetail.statDate}">2016-01-01</td>
+                    <td th:text="${cityUserStatDetail.countDay}">0</td>
+                    <td th:text="${cityUserStatDetail.countWeek}">0</td>
+                    <td th:text="${cityUserStatDetail.countMonth}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour1}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour2}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour3}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour4}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour5}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour6}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour7}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour8}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour9}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour10}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour11}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour12}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour13}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour14}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour15}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour16}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour17}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour18}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour19}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour20}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour21}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour22}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour23}">0</td>
+                    <td th:text="${cityUserStatDetail.countHour24}">0</td>
                 </tr>
             </table>
         </div>

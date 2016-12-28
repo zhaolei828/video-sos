@@ -4,6 +4,7 @@ import com.derder.base.BaseDAO;
 import com.derder.business.model.Video;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,4 +16,14 @@ public interface VideoDAO extends BaseDAO<Video, Long> {
             "FROM `video` v LEFT JOIN `city` c ON v.`CITY_CODE`=c.`CITY_CODE` " +
             "GROUP BY v.CITY_CODE ORDER BY userCount DESC LIMIT ?1",nativeQuery = true)
     List<Object[]> cityUserStat(int limitNum);
+
+    @Query(value ="SELECT s.*,c.`CITY` FROM `stat_city_user_by_day` s " +
+            "LEFT JOIN `city` c ON s.`CITY_CODE` = c.`CITY_CODE` " +
+            "WHERE s.`CITY_CODE`=?1 ORDER BY s.`STAT_DATE` DESC LIMIT ?2,?3",nativeQuery = true)
+    List<Object[]> findCityUserStatDetailList(String cityCode,int fromIndex,int limitNum);
+
+    @Query(value ="SELECT s.*,c.`CITY` FROM `stat_city_user_by_day` s " +
+            "LEFT JOIN `city` c ON s.`CITY_CODE` = c.`CITY_CODE` " +
+            "WHERE s.`CITY_CODE`=?1 AND s.`STAT_DATE`=?2 LIMIT ?3,?4",nativeQuery = true)
+    List<Object[]> findCityUserStatDetailListByDate(String cityCode,Date statDate,int fromIndex,int limitNum);
 }
