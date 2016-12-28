@@ -9,9 +9,14 @@ import com.derder.business.service.VideoService;
 import com.derder.common.util.DateUtil;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -62,14 +67,17 @@ public class VideoServiceImpl extends BaseDomainService implements VideoService 
     }
 
     @Override
-    public List<CityUserStatDetail> getCityUserStatDetailList(String cityCode, Date statDate, int fromIndex, int limitNum) {
+    public Page<CityUserStatDetail> getCityUserStatDetailList(String cityCode, Date statDate, int pageNo, int pageSize) {
         List<CityUserStatDetail> list = Lists.newArrayList();
-
+        int count;
+        int fromIndex = (pageNo-1)*pageSize;
         List<Object[]> objectArrayList;
         if (null == statDate){
-            objectArrayList = videoDAO.findCityUserStatDetailList(cityCode,fromIndex,limitNum);
+            objectArrayList = videoDAO.findCityUserStatDetailList(cityCode,fromIndex,pageSize);
+            count = videoDAO.findCityUserStatDetailListCount(cityCode);
         }else {
-            objectArrayList = videoDAO.findCityUserStatDetailListByDate(cityCode,statDate,fromIndex,limitNum);
+            objectArrayList = videoDAO.findCityUserStatDetailListByDate(cityCode,statDate,fromIndex,pageSize);
+            count = videoDAO.findCityUserStatDetailListCountByDate(cityCode,statDate);
         }
 
         if (null == objectArrayList) {
@@ -110,6 +118,94 @@ public class VideoServiceImpl extends BaseDomainService implements VideoService 
             cityUserStatDetail.setCountHour24(Integer.valueOf(objectArray[29].toString()));
             list.add(cityUserStatDetail);
         }
-        return list;
+
+        Page<CityUserStatDetail> page = new Page<CityUserStatDetail>() {
+            @Override
+            public int getTotalPages() {
+                if (count != 0 && count % pageSize ==0){
+                    return count / pageSize;
+                }else {
+                    return count / pageSize +1;
+                }
+            }
+
+            @Override
+            public long getTotalElements() {
+                return count;
+            }
+
+            @Override
+            public <S> Page<S> map(Converter<? super CityUserStatDetail, ? extends S> converter) {
+                return null;
+            }
+
+            @Override
+            public int getNumber() {
+                return pageNo;
+            }
+
+            @Override
+            public int getSize() {
+                return pageSize;
+            }
+
+            @Override
+            public int getNumberOfElements() {
+                return 0;
+            }
+
+            @Override
+            public List<CityUserStatDetail> getContent() {
+                return list;
+            }
+
+            @Override
+            public boolean hasContent() {
+                return false;
+            }
+
+            @Override
+            public Sort getSort() {
+                return null;
+            }
+
+            @Override
+            public boolean isFirst() {
+                if (pageNo == 1) return true;
+                else return false;
+            }
+
+            @Override
+            public boolean isLast() {
+                if (getNumber() == getTotalPages()) return true;
+                else return false;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+
+            @Override
+            public boolean hasPrevious() {
+                return false;
+            }
+
+            @Override
+            public Pageable nextPageable() {
+                return null;
+            }
+
+            @Override
+            public Pageable previousPageable() {
+                return null;
+            }
+
+            @Override
+            public Iterator<CityUserStatDetail> iterator() {
+                return null;
+            }
+        };
+        return page;
     }
 }

@@ -21,13 +21,13 @@
     <div class="row">
         <div class="col-md-4">
             <div class="list-group">
-                <a href="#" class="list-group-item active">统计</a>
+                <a href="/admin/" class="list-group-item active">统计</a>
                 <a href="users.html" class="list-group-item">用户管理</a>
                 <a href="email_setting.html" class="list-group-item">发送邮箱设置</a>
             </div>
         </div>
         <div class="col-md-8">
-            <div>深圳</div>
+            <div th:object="${city}">城市: <span th:text="*{city}">北京</span></div>
             <table class="table table-hover">
                 <tr>
                     <th>日期</th>
@@ -59,7 +59,7 @@
                     <th>22:00 ~ 23:00</th>
                     <th>23:00 ~ 24:00</th>
                 </tr>
-                <tr th:each="cityUserStatDetail : ${cityUserStatDetailList}">
+                <tr th:each="cityUserStatDetail : ${page.content}">
                     <td th:text="${cityUserStatDetail.statDate}">2016-01-01</td>
                     <td th:text="${cityUserStatDetail.countDay}">0</td>
                     <td th:text="${cityUserStatDetail.countWeek}">0</td>
@@ -90,6 +90,15 @@
                     <td th:text="${cityUserStatDetail.countHour24}">0</td>
                 </tr>
             </table>
+            <nav class="pull-right">
+                <ul class="pagination">
+                    <li th:class="${page.first} ? 'disabled' : ''"><a href="/admin/?pageNumber=1">&laquo;</a></li>
+                    <li th:each="pageNo : ${#numbers.sequence(0, page.totalPages - 1)}" th:class="${page.number eq pageNo}? 'active' : ''">
+                        <a th:href="@{/admin/(pageNumber=${pageNo + 1})}" th:text="${pageNo + 1}"></a>
+                    </li>
+                    <li th:class="${page.last} ? 'disabled' : ''"><a th:href="@{/admin/(pageNumber=${page.totalPages})}">&raquo;</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
