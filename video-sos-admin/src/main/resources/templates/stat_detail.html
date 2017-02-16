@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+>
 <head>
     <title>后台管理 - 统计详情页</title>
     <!-- Bootstrap core CSS -->
@@ -92,11 +92,11 @@
             </table>
             <nav class="pull-right">
                 <ul class="pagination">
-                    <li th:class="${page.first} ? 'disabled' : ''"><a href="/admin/?pageNumber=1">&laquo;</a></li>
+                    <li th:class="${page.first} ? 'disabled' : ''"><a th:href="@{/stat_detail/(pageNumber=1,cityCode=${city.cityCode})}">&laquo;</a></li>
                     <li th:each="pageNo : ${#numbers.sequence(0, page.totalPages - 1)}" th:class="${page.number eq pageNo}? 'active' : ''">
-                        <a th:href="@{/admin/(pageNumber=${pageNo + 1})}" th:text="${pageNo + 1}"></a>
+                        <a th:href="@{/stat_detail/(pageNumber=${pageNo + 1},cityCode=${city.cityCode})}" th:text="${pageNo + 1}"></a>
                     </li>
-                    <li th:class="${page.last} ? 'disabled' : ''"><a th:href="@{/admin/(pageNumber=${page.totalPages})}">&raquo;</a></li>
+                    <li th:class="${page.last} ? 'disabled' : ''"><a th:href="@{/stat_detail/(pageNumber=${page.totalPages},cityCode=${city.cityCode})}">&raquo;</a></li>
                 </ul>
             </nav>
         </div>

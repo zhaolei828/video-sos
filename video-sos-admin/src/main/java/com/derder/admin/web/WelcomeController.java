@@ -58,4 +58,21 @@ public class WelcomeController {
 		model.put("city",city);
 		return "stat_detail";
 	}
+
+	@RequestMapping("/user_video")
+	public String userVideo(Map<String, Object> model
+			, @RequestParam(defaultValue = "") String cityCode
+			,@RequestParam(defaultValue = "1") int pageNumber
+			,@RequestParam(defaultValue = "20") int limitNum
+			,String strStatDate) {
+		Date statDate = null;
+		if (null != strStatDate){
+			statDate = DateUtil.string2Date(strStatDate);
+		}
+		City city = cityService.getCity(cityCode);
+		Page<CityUserStatDetail> page = videoService.getCityUserStatDetailList(cityCode, statDate ,pageNumber,limitNum);
+		model.put("page",page);
+		model.put("city",city);
+		return "user_video";
+	}
 }
